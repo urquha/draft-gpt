@@ -1,0 +1,8 @@
+{
+  "bootstrap-static": "https://draft.premierleague.com/api/bootstrap-static",
+  "game": "https://draft.premierleague.com/api/game",
+  "league-details": "https://draft.premierleague.com/api/league/67295/details",
+  "league-element-status": "https://draft.premierleague.com/api/league/67295/element-status",
+  "fixtures": "https://draft.premierleague.com/api/event/x/fixtures",
+  "live": "https://draft.premierleague.com/api/event/x/live"
+}

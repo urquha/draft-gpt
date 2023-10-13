@@ -1,0 +1,21 @@
+{
+  "name": "draft-gpt",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.31.17",
+    "ajv": "^8.12.0",
+    "axios": "^1.5.1",
+    "fp-ts": "^2.16.1",
+    "prettier": "^3.0.3"
+  }
+}

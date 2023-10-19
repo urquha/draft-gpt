@@ -4,5 +4,6 @@
   "league-details": "https://draft.premierleague.com/api/league/67295/details",
   "league-element-status": "https://draft.premierleague.com/api/league/67295/element-status",
   "fixtures": "https://draft.premierleague.com/api/event/x/fixtures",
-  "live": "https://draft.premierleague.com/api/event/x/live"
+  "live": "https://draft.premierleague.com/api/event/x/live",
+  "choices": "https://draft.premierleague.com/api/draft/67295/choices"
 }

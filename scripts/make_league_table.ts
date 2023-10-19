@@ -94,4 +94,4 @@ const fallbackEntry: FallbackEntryType = {
 console.log(masterLeagueTable);
 
 const outputData = JSON.stringify(masterLeagueTable, null, 2);
-fs.writeFileSync('output/master_league_table.json', outputData);
+fs.writeFileSync('../output/master_league_table.json', outputData);

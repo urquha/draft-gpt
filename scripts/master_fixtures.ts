@@ -65,4 +65,4 @@ const fullData = pipe(
 console.log(fullData);
 
 const outputData = JSON.stringify(fullData, null, 2);
-fs.writeFileSync('output/master_fixtures.json', outputData);
+fs.writeFileSync('../output/master_fixtures.json', outputData);

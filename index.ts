@@ -1,14 +1,17 @@
-import { Type, Static } from '@sinclair/typebox';
+import { Type } from '@sinclair/typebox';
 import * as fs from 'fs';
 import Ajv from 'ajv';
-import { SchemaMappings } from './schema_mappings.ts';
+import { SchemaMappings } from './schemas/schema_mappings';
 import { readJsonFile, fetchData } from './util';
+import dotenv from 'dotenv';
 
+// Load environment variables from .env file
+dotenv.config();
 // Instantiate Ajv
-const ajv = new Ajv();
+const ajv = new Ajv({ strict: false });
 
 // Function to validate the API response
-function validateApiResponse(response: any, schema: Type, key): boolean {
+function validateApiResponse(response: any, schema: Type, key: String): boolean {
   // Compile your schema with Ajv
   const validate = ajv.compile(schema);
   const valid = validate(response);
@@ -26,7 +29,7 @@ async function processUrl(url: string, key: string, type: Type): Promise<void> {
     if (type !== null) {
       const schema_check = validateApiResponse(response, type, key);
       if (schema_check == false) {
-        console.log('problem with ' + key, schema_check);
+        console.log('validation for ' + key, schema_check);
       }
     } else {
       console.log(key, type);
@@ -35,7 +38,7 @@ async function processUrl(url: string, key: string, type: Type): Promise<void> {
     const filePath = `./data/${key}.json`; // Set the file path and name based on the key
     fs.writeFileSync(filePath, JSON.stringify(response, null, 2)); // Save the response data as a JSON file
   } catch (error: any) {
-    console.error(
+      console.error(
       `Failed to fetch or validate data for ${key}: ${error.message}`,
     );
   }

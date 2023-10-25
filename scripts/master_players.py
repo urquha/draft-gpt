@@ -34,3 +34,11 @@ players_owners = pd.merge(owners, league_entries_df, left_on='owner', right_on='
 
 master_player_stats = pd.merge(df, players_owners, left_on='id', right_on='element').sort_values(['total_points', 'bps'], ascending=False)
 master_player_stats.to_csv('output/master_player_stats.csv')
+
+
+top_scoring_players = master_player_stats.nlargest(20, 'event_points').sort_values('event_points', ascending=False)[[
+       'event_points', 'first_name', 'second_name', 'status_x', 'total_points', 'element_type', 'team', 'element',
+       'in_accepted_trade', 'owner',  'entry_name',
+       'short_name']]
+
+top_scoring_players.to_csv('output/top_scoring_players.csv')

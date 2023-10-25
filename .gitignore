@@ -176,7 +176,7 @@ dist
 
 /data/*
 *.csv
-
+output/*
 error.log
 
 *.ipynb_checkpoints/

@@ -17,4 +17,3 @@ export async function fetchData(apiUrl: string): Promise<undefined | any> {
 
   return response.data;
 }
-

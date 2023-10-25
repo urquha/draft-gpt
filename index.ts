@@ -11,7 +11,11 @@ dotenv.config();
 const ajv = new Ajv({ strict: false });
 
 // Function to validate the API response
-function validateApiResponse(response: any, schema: Type, key: String): boolean {
+function validateApiResponse(
+  response: any,
+  schema: Type,
+  key: String,
+): boolean {
   // Compile your schema with Ajv
   const validate = ajv.compile(schema);
   const valid = validate(response);
@@ -38,7 +42,7 @@ async function processUrl(url: string, key: string, type: Type): Promise<void> {
     const filePath = `./data/${key}.json`; // Set the file path and name based on the key
     fs.writeFileSync(filePath, JSON.stringify(response, null, 2)); // Save the response data as a JSON file
   } catch (error: any) {
-      console.error(
+    console.error(
       `Failed to fetch or validate data for ${key}: ${error.message}`,
     );
   }

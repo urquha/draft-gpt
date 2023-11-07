@@ -27,9 +27,10 @@ function validateApiResponse(
 }
 
 async function processUrl(url: string, key: string, type: Type): Promise<void> {
-  try {
-    const response = await fetchData(url);
 
+  try {    
+
+    const response = await fetchData(url);
     if (type !== null) {
       const schema_check = validateApiResponse(response, type, key);
       if (schema_check == false) {
@@ -40,7 +41,7 @@ async function processUrl(url: string, key: string, type: Type): Promise<void> {
     }
 
     const filePath = `./data/${key}.json`; // Set the file path and name based on the key
-    fs.writeFileSync(filePath, JSON.stringify(response, null, 2)); // Save the response data as a JSON file
+fs.writeFileSync(filePath, JSON.stringify(response, null, 2)); // Save the response data as a JSON file
   } catch (error: any) {
     console.error(
       `Failed to fetch or validate data for ${key}: ${error.message}`,

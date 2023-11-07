@@ -38,7 +38,7 @@ const ElementSchema = Type.Object({
   form: Type.String(),
   in_dreamteam: Type.Boolean(),
   news: Type.String(),
-  news_added: Type.Union([Type.Null(), Type.Number()]),
+  news_added: Type.Any(),
   news_return: Type.Null(),
   news_updated: Type.Null(),
   points_per_game: Type.String(),
@@ -226,7 +226,7 @@ export const BootstrapStaticSchema = Type.Object({
   element_types: ElementTypesSchema,
   events: EventsSchema,
 
-  fixtures: FixturesSchema,
+  // fixtures: FixturesSchema,
   settings: SettingsSchema,
   teams: TeamsSchema,
 });

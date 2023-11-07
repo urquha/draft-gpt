@@ -3,6 +3,9 @@
 # Define the directory to look in; replace with your directory
 DIRECTORY="./scripts"
 
+bun install
+pip3 install -r requirements.txt
+
 # Iterate over each file in the directory
 for filename in "$DIRECTORY"/*; do
   # Check the file extension

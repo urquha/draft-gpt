@@ -14,6 +14,12 @@ export function readJsonFile(filePath: string): Record<string, string> | null {
 
 export async function fetchData(apiUrl: string): Promise<undefined | any> {
   console.log(apiUrl);
-  const response = await axios.get(apiUrl);
-  return response.data;
+  return axios.get(apiUrl)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      return undefined;
+    });
 }

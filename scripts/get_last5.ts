@@ -6,7 +6,10 @@ import { map } from 'fp-ts/Array';
 const gameData = fs.readFileSync('data/game.json', 'utf8');
 const game = JSON.parse(gameData);
 const gameweek = game.current_event;
-const nextGameweek = gameweek + 1;
+const prevGameweek = gameweek - 1;
+const prevGameweek2 = gameweek - 2;
+const prevGameweek3 = gameweek - 3;
+const prevGameweek4 = gameweek - 4;
 
 const rawData = fs.readFileSync('data/league-details.json', 'utf8');
 const data = JSON.parse(rawData);
@@ -15,7 +18,7 @@ const teams = data.league_entries;
 const matches = data.matches;
 
 const predicate = (item: { event: number }) =>
-  item.event === gameweek || item.event === nextGameweek;
+  item.event === gameweek || item.event === prevGameweek || item.event === prevGameweek2 || item.event === prevGameweek3 || item.event === prevGameweek4;
 
 const filteredData = pipe(matches, filter(predicate));
 const fullData = pipe(
@@ -64,13 +67,13 @@ const fullData = pipe(
 );
 
 const outputData = JSON.stringify(fullData, null, 2);
-fs.writeFileSync('output/get_prev_next_fixtures.json', outputData);
+fs.writeFileSync('output/get_past_5_fixtures.json', outputData);
 
 // Convert JSON object to a string
 const textData = JSON.stringify(outputData, null, 4); // 'null, 4' for pretty print
 
 // Save the string to a text file
-fs.writeFile('output/get_prev_next_fixtures.txt', textData, (err) => {
+fs.writeFile('output/get_past_5_fixtures.txt', textData, (err) => {
     if (err) throw err;
     console.log('The file has been saved!');
 });

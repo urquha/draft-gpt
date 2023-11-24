@@ -13,8 +13,8 @@ const ajv = new Ajv({ strict: false });
 // Function to validate the API response
 function validateApiResponse(
   response: any,
-  schema: Type,
-  key: String,
+  schema: typeof Type,
+  key: string,
 ): boolean {
   // Compile your schema with Ajv
   const validate = ajv.compile(schema);
@@ -29,8 +29,12 @@ function validateApiResponse(
 async function processUrl(url: string, key: string, type: Type): Promise<void> {
 
   try {    
+    console.log(url)
 
     const response = await fetchData(url);
+    console.log(response)
+    console.log(url)
+
     if (type !== null) {
       const schema_check = validateApiResponse(response, type, key);
       if (schema_check == false) {

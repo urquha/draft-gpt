@@ -20,6 +20,7 @@ Last Week's Summary: A review of key matchups and outcomes from the previous wee
 
 Top Players: Highlight the top-performing players based on the most recent week's data.
 
+Manager of The week: player with the most points in a given week is the manager of the week, If two teams have the same amount of points, the manager of the week will be the one which is lower in the league, if bottom of the league beats top of the league, then they are manager of the week.
 
 Contextual Framework for the Weekly Column
 Introduction to the League

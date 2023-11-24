@@ -81,7 +81,27 @@ master_player_stats = pd.merge(
     df, players_owners, left_on="id", right_on="element"
 ).sort_values(["total_points", "bps"], ascending=False)
 master_player_stats.to_csv("output/master_player_stats.csv")
+# Convert DataFrame to string
+text_data = master_player_stats[
+    [
+        "event_points",
+        "first_name",
+        "second_name",
+        "status_x",
+        "total_points",
+        "element_type",
+        "team",
+        "element",
+        "in_accepted_trade",
+        "owner",
+        "entry_name",
+        "short_name",
+    ]
+].to_string()
 
+# Save to a text file
+with open('output/master_player_stats.txt', 'w') as file:
+    file.write(text_data)
 
 top_scoring_players = master_player_stats.nlargest(20, "event_points").sort_values(
     "event_points", ascending=False
@@ -102,4 +122,11 @@ top_scoring_players = master_player_stats.nlargest(20, "event_points").sort_valu
     ]
 ]
 
-top_scoring_players.to_csv("output/top_scoring_players.csv")
+top_scoring_players.to_json("output/top_scoring_players.json")
+# Convert DataFrame to string
+text_data = top_scoring_players.to_string()
+
+# Save to a text file
+with open('output/top_scoring_players.txt', 'w') as file:
+    file.write(text_data)
+
